@@ -1,0 +1,29 @@
+@startuml
+loop
+actor "Владелец" as owner
+boundary "Приложение" as app
+entity "Данные" as data
+actor "Шеф повар" as trainee
+owner -> app : Запрос на изменение меню
+app -> trainee : Запрос
+trainee -> app : Ответ
+app -> data : Внесенные данные 
+data -> app : Подтверждение/отказ внесения данных
+app -> owner : Заказ принят
+end
+
+loop
+
+actor "Владелец" as owner
+boundary "Приложение" as app
+entity "Данные" as data
+actor "Повар-стажер" as trainee
+owner -> app : Запрос
+app -> data : Заказ 
+app -> trainee : Список заказанных блюд
+trainee -> app : Подтверждение принятия заказа
+data -> app : Подтверждение
+app -> owner : Заказ принят
+
+end
+@enduml
